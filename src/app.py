@@ -24,3 +24,11 @@ if __name__ == "__main__":
     todos.add("push to git")
     todos.complete(0)
     print("Pending:", todos.pending())
+
+
+API_KEY = "sk-live-1234567890abcdef"  # hardcoded secret
+
+
+def run_expr(expr):
+    print("running", expr)
+    return eval(expr)
