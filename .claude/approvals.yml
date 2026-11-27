@@ -1,0 +1,10 @@
+version: 1
+rules:
+  - purpose: "Every change needs one person. A failed Claude review or a high-severity finding blocks the merge."
+    paths: ["**"]
+    verdict: { claude: comments, seats: 1 }
+    override:
+      - { if: "claude/code_review = fail OR claude/code_review.severity >= high", verdict: { claude: blocks } }
+  - purpose: "legacy/ is frozen: any change there is blocked. Lift the freeze by removing this rule in a PR."
+    paths: ["legacy/**"]
+    verdict: { claude: blocks }
